@@ -163,8 +163,7 @@ namespace AkbilYonetimiFormUI
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FrmKayitOl";
-            this.Opacity = 0.5D;
-            this.Text = "FrmKayitOl";
+            this.Text = "Kayıt Ol";
             this.ResumeLayout(false);
             this.PerformLayout();
 

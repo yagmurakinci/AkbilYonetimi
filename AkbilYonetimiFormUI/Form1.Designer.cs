@@ -109,7 +109,7 @@ namespace AkbilYonetimiFormUI
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FrmGiris";
-            this.Text = "Form1";
+            this.Text = "Giriş";
             this.ResumeLayout(false);
             this.PerformLayout();
 
