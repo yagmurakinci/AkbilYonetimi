@@ -17,10 +17,7 @@ namespace AkbilYonetimiFormUI
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -30,6 +27,12 @@ namespace AkbilYonetimiFormUI
         private void button3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAkbiller_Click(object sender, EventArgs e)
+        {
+            FrmAkbilIslemleri frmAkbilIslemleri = new FrmAkbilIslemleri();
+            frmAkbilIslemleri.ShowDialog();
         }
     }
 }

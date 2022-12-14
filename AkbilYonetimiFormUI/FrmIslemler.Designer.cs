@@ -45,7 +45,7 @@ namespace AkbilYonetimiFormUI
             this.btnAkbiller.TabIndex = 0;
             this.btnAkbiller.Text = "AKBİL İŞLEMLERİ";
             this.btnAkbiller.UseVisualStyleBackColor = false;
-            this.btnAkbiller.Click += new System.EventHandler(this.button1_Click);
+            this.btnAkbiller.Click += new System.EventHandler(this.btnAkbiller_Click_1);
             // 
             // btnTalimatlar
             // 

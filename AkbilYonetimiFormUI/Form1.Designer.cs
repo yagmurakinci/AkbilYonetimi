@@ -94,6 +94,7 @@ namespace AkbilYonetimiFormUI
             this.btnKayitOl.TabIndex = 5;
             this.btnKayitOl.Text = "KAYIT OL";
             this.btnKayitOl.UseVisualStyleBackColor = true;
+            this.btnKayitOl.Click += new System.EventHandler(this.btnKayitOl_Click);
             // 
             // FrmGiris
             // 
@@ -110,6 +111,7 @@ namespace AkbilYonetimiFormUI
             this.Controls.Add(this.label1);
             this.Name = "FrmGiris";
             this.Text = "Giriş";
+            this.Load += new System.EventHandler(this.FrmGiris_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

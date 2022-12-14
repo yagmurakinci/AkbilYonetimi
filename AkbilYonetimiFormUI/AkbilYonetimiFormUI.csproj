@@ -115,5 +115,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AkbilYonetimBusinessLayer\AkbilYonetimBusinessLayer.csproj">
+      <Project>{989669f0-460b-4147-9a6c-c280bbb4de89}</Project>
+      <Name>AkbilYonetimBusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AkbilYonetimiDataLayer\AkbilYonetimiDataLayer.csproj">
+      <Project>{08368410-e0e8-450c-b7a4-e34b4c0032b9}</Project>
+      <Name>AkbilYonetimiDataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AkbilYonetimiEntityLayer\AkbilYonetimiEntityLayer.csproj">
+      <Project>{ebf6f9b3-884e-4e55-9ae2-f6a0bcccecab}</Project>
+      <Name>AkbilYonetimiEntityLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -41,6 +41,7 @@ namespace AkbilYonetimiFormUI
             this.txtSifre = new System.Windows.Forms.TextBox();
             this.dtpDogumTarihi = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnGiris = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -143,6 +144,17 @@ namespace AkbilYonetimiFormUI
             this.button1.TabIndex = 11;
             this.button1.Text = "KAYIT OL";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnGiris
+            // 
+            this.btnGiris.Location = new System.Drawing.Point(111, 319);
+            this.btnGiris.Name = "btnGiris";
+            this.btnGiris.Size = new System.Drawing.Size(212, 46);
+            this.btnGiris.TabIndex = 12;
+            this.btnGiris.Text = "GİRİŞ YAP";
+            this.btnGiris.UseVisualStyleBackColor = true;
+            this.btnGiris.Click += new System.EventHandler(this.btnGiris_Click);
             // 
             // FrmKayitOl
             // 
@@ -151,6 +163,7 @@ namespace AkbilYonetimiFormUI
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(474, 389);
+            this.Controls.Add(this.btnGiris);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dtpDogumTarihi);
             this.Controls.Add(this.txtSifre);
@@ -164,6 +177,8 @@ namespace AkbilYonetimiFormUI
             this.Controls.Add(this.label1);
             this.Name = "FrmKayitOl";
             this.Text = "Kayıt Ol";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmKayitOl_FormClosed);
+            this.Load += new System.EventHandler(this.FrmKayitOl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,5 +197,6 @@ namespace AkbilYonetimiFormUI
         private System.Windows.Forms.TextBox txtSifre;
         private System.Windows.Forms.DateTimePicker dtpDogumTarihi;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGiris;
     }
 }
