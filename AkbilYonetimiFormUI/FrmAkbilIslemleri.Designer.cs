@@ -33,12 +33,12 @@ namespace AkbilYonetimiFormUI
             this.anaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cikisyapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxAkbilProps = new System.Windows.Forms.GroupBox();
+            this.cmbBoxAkbilTipleri = new System.Windows.Forms.ComboBox();
+            this.txtAkbilSeriNo = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewAkbiller = new System.Windows.Forms.DataGridView();
             this.btnAkbilKaydet = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtAkbilSeriNo = new System.Windows.Forms.TextBox();
-            this.cmbBoxAkbilTipleri = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.groupBoxAkbilProps.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAkbiller)).BeginInit();
@@ -84,6 +84,41 @@ namespace AkbilYonetimiFormUI
             this.groupBoxAkbilProps.TabStop = false;
             this.groupBoxAkbilProps.Text = "BİLGİLER";
             // 
+            // cmbBoxAkbilTipleri
+            // 
+            this.cmbBoxAkbilTipleri.FormattingEnabled = true;
+            this.cmbBoxAkbilTipleri.Location = new System.Drawing.Point(158, 80);
+            this.cmbBoxAkbilTipleri.Name = "cmbBoxAkbilTipleri";
+            this.cmbBoxAkbilTipleri.Size = new System.Drawing.Size(183, 24);
+            this.cmbBoxAkbilTipleri.TabIndex = 3;
+            // 
+            // txtAkbilSeriNo
+            // 
+            this.txtAkbilSeriNo.Location = new System.Drawing.Point(158, 43);
+            this.txtAkbilSeriNo.Name = "txtAkbilSeriNo";
+            this.txtAkbilSeriNo.Size = new System.Drawing.Size(183, 22);
+            this.txtAkbilSeriNo.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.Location = new System.Drawing.Point(34, 80);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(81, 16);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "AKBİL TİPİ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.Location = new System.Drawing.Point(34, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 16);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "AKBİL SERİ NO:";
+            // 
             // dataGridViewAkbiller
             // 
             this.dataGridViewAkbiller.AllowUserToAddRows = false;
@@ -105,41 +140,7 @@ namespace AkbilYonetimiFormUI
             this.btnAkbilKaydet.TabIndex = 3;
             this.btnAkbilKaydet.Text = "YENİ AKBİLİ KAYDET";
             this.btnAkbilKaydet.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(34, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "AKBİL SERİ NO:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(34, 80);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 16);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "AKBİL TİPİ";
-            // 
-            // txtAkbilSeriNo
-            // 
-            this.txtAkbilSeriNo.Location = new System.Drawing.Point(158, 43);
-            this.txtAkbilSeriNo.Name = "txtAkbilSeriNo";
-            this.txtAkbilSeriNo.Size = new System.Drawing.Size(183, 22);
-            this.txtAkbilSeriNo.TabIndex = 2;
-            // 
-            // cmbBoxAkbilTipleri
-            // 
-            this.cmbBoxAkbilTipleri.FormattingEnabled = true;
-            this.cmbBoxAkbilTipleri.Location = new System.Drawing.Point(158, 80);
-            this.cmbBoxAkbilTipleri.Name = "cmbBoxAkbilTipleri";
-            this.cmbBoxAkbilTipleri.Size = new System.Drawing.Size(183, 24);
-            this.cmbBoxAkbilTipleri.TabIndex = 3;
+            this.btnAkbilKaydet.Click += new System.EventHandler(this.btnAkbilKaydet_Click);
             // 
             // FrmAkbilIslemleri
             // 
