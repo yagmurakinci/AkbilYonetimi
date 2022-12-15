@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 
 namespace AkbilYonetimiEntityLayer.Entities
 {
-    class Enums
+    public class Enums
     {
+        public static Array AkbilTipleriniGetir()
+        {
+            var akbilTipleri = Enum.GetValues(typeof(AkbilTipleri));
+            return akbilTipleri;
+        }
     }
 
     public enum AkbilTipleri

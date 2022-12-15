@@ -83,6 +83,7 @@ namespace AkbilYonetimiFormUI
             this.groupBoxAkbilProps.TabIndex = 1;
             this.groupBoxAkbilProps.TabStop = false;
             this.groupBoxAkbilProps.Text = "BİLGİLER";
+            this.groupBoxAkbilProps.Enter += new System.EventHandler(this.groupBoxAkbilProps_Enter);
             // 
             // cmbBoxAkbilTipleri
             // 
@@ -91,6 +92,7 @@ namespace AkbilYonetimiFormUI
             this.cmbBoxAkbilTipleri.Name = "cmbBoxAkbilTipleri";
             this.cmbBoxAkbilTipleri.Size = new System.Drawing.Size(183, 24);
             this.cmbBoxAkbilTipleri.TabIndex = 3;
+            this.cmbBoxAkbilTipleri.SelectedIndexChanged += new System.EventHandler(this.cmbBoxAkbilTipleri_SelectedIndexChanged);
             // 
             // txtAkbilSeriNo
             // 
@@ -154,6 +156,7 @@ namespace AkbilYonetimiFormUI
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmAkbilIslemleri";
             this.Text = "Akbil İşlemleri";
+            this.Load += new System.EventHandler(this.FrmAkbilIslemleri_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBoxAkbilProps.ResumeLayout(false);

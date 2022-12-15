@@ -27,6 +27,11 @@ namespace AkbilYonetimiFormUI
 
         private void button1_Click(object sender, EventArgs e)
         {
+            GirisYap();
+        }
+
+        private void GirisYap()
+        {
             try
             {
                 string sqlBaglantiCumlesi = @"Server=DESKTOP-OFVK2FD\MSSQLSERVER01;Database=AKBİLYONETİMİDB;Trusted_Connection=True;";
@@ -43,7 +48,11 @@ namespace AkbilYonetimiFormUI
                 {
                     while (okuyucu.Read())
                     {
-                        MessageBox.Show($"Hoşgeldiniz {okuyucu["Isim"].ToString()}");
+                        MessageBox.Show($"Hoşgeldiniz {okuyucu["Isim"].ToString()}  {okuyucu["Soyisim"].ToString()}");
+                        GenelIslemler.GirisYapmisKullaniciID = Convert.ToInt32(okuyucu["Id"]);
+                        GenelIslemler.GirisYapmisKullaniciAdSoyad = $"{okuyucu["Isim"].ToString()} {okuyucu["Soyisim"].ToString()}";
+
+
                     }
                     this.Hide();
                     FrmIslemler frmIslemler = new FrmIslemler();
@@ -70,6 +79,19 @@ namespace AkbilYonetimiFormUI
             if (Email !=null)
             {
                 txtEmail.Text = Email;
+            }
+            txtEmail.TabIndex = 1;
+            txtSifre.TabIndex = 2;
+            btnGirisYap.TabIndex = 3;
+            btnKayitOl.TabIndex = 4;
+
+        }
+
+        private void txtSifre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                GirisYap();
             }
         }
     }

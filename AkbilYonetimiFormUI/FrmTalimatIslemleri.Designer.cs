@@ -39,8 +39,13 @@ namespace AkbilYonetimiFormUI
             this.checkBoxBekleyenTalimatlar = new System.Windows.Forms.CheckBox();
             this.dataGridViewTalimatlar = new System.Windows.Forms.DataGridView();
             this.timerBekleyenTalimat = new System.Windows.Forms.Timer(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtBakiye = new System.Windows.Forms.TextBox();
+            this.btnYukle = new System.Windows.Forms.Button();
+            this.groupBoxBakiye = new System.Windows.Forms.GroupBox();
             this.menuStripTalimatlar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTalimatlar)).BeginInit();
+            this.groupBoxBakiye.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripTalimatlar
@@ -105,7 +110,7 @@ namespace AkbilYonetimiFormUI
             this.checkBoxBekleyenTalimatlar.AutoSize = true;
             this.checkBoxBekleyenTalimatlar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.checkBoxBekleyenTalimatlar.ForeColor = System.Drawing.Color.Red;
-            this.checkBoxBekleyenTalimatlar.Location = new System.Drawing.Point(36, 99);
+            this.checkBoxBekleyenTalimatlar.Location = new System.Drawing.Point(36, 131);
             this.checkBoxBekleyenTalimatlar.Name = "checkBoxBekleyenTalimatlar";
             this.checkBoxBekleyenTalimatlar.Size = new System.Drawing.Size(255, 19);
             this.checkBoxBekleyenTalimatlar.TabIndex = 4;
@@ -119,17 +124,57 @@ namespace AkbilYonetimiFormUI
             this.dataGridViewTalimatlar.AllowUserToOrderColumns = true;
             this.dataGridViewTalimatlar.BackgroundColor = System.Drawing.Color.Silver;
             this.dataGridViewTalimatlar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTalimatlar.Location = new System.Drawing.Point(36, 146);
+            this.dataGridViewTalimatlar.Location = new System.Drawing.Point(36, 156);
             this.dataGridViewTalimatlar.Name = "dataGridViewTalimatlar";
             this.dataGridViewTalimatlar.ReadOnly = true;
             this.dataGridViewTalimatlar.Size = new System.Drawing.Size(536, 156);
             this.dataGridViewTalimatlar.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.Location = new System.Drawing.Point(6, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(102, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Yüklenecek Bakiye:";
+            // 
+            // txtBakiye
+            // 
+            this.txtBakiye.Location = new System.Drawing.Point(111, 17);
+            this.txtBakiye.Name = "txtBakiye";
+            this.txtBakiye.Size = new System.Drawing.Size(123, 20);
+            this.txtBakiye.TabIndex = 7;
+            // 
+            // btnYukle
+            // 
+            this.btnYukle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnYukle.Location = new System.Drawing.Point(240, 17);
+            this.btnYukle.Name = "btnYukle";
+            this.btnYukle.Size = new System.Drawing.Size(86, 20);
+            this.btnYukle.TabIndex = 8;
+            this.btnYukle.Text = "YÜKLE";
+            this.btnYukle.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxBakiye
+            // 
+            this.groupBoxBakiye.Controls.Add(this.btnYukle);
+            this.groupBoxBakiye.Controls.Add(this.txtBakiye);
+            this.groupBoxBakiye.Controls.Add(this.label2);
+            this.groupBoxBakiye.Location = new System.Drawing.Point(36, 76);
+            this.groupBoxBakiye.Name = "groupBoxBakiye";
+            this.groupBoxBakiye.Size = new System.Drawing.Size(345, 49);
+            this.groupBoxBakiye.TabIndex = 9;
+            this.groupBoxBakiye.TabStop = false;
+            this.groupBoxBakiye.Enter += new System.EventHandler(this.groupBoxBakiye_Enter);
             // 
             // FrmTalimatIslemleri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(612, 324);
+            this.Controls.Add(this.groupBoxBakiye);
             this.Controls.Add(this.dataGridViewTalimatlar);
             this.Controls.Add(this.checkBoxBekleyenTalimatlar);
             this.Controls.Add(this.cmbBoxAkbiller);
@@ -142,6 +187,8 @@ namespace AkbilYonetimiFormUI
             this.menuStripTalimatlar.ResumeLayout(false);
             this.menuStripTalimatlar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTalimatlar)).EndInit();
+            this.groupBoxBakiye.ResumeLayout(false);
+            this.groupBoxBakiye.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,5 +205,9 @@ namespace AkbilYonetimiFormUI
         private System.Windows.Forms.CheckBox checkBoxBekleyenTalimatlar;
         private System.Windows.Forms.DataGridView dataGridViewTalimatlar;
         private System.Windows.Forms.Timer timerBekleyenTalimat;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtBakiye;
+        private System.Windows.Forms.Button btnYukle;
+        private System.Windows.Forms.GroupBox groupBoxBakiye;
     }
 }

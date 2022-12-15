@@ -9,6 +9,8 @@ namespace AkbilYonetimBusinessLayer
 {
     public class GenelIslemler
     {
+        public static int GirisYapmisKullaniciID{ get; set; }
+        public static string GirisYapmisKullaniciAdSoyad{ get; set; }
         public static string MD5Encryption(string encryptionText)
         {
 

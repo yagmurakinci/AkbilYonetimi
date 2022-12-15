@@ -34,5 +34,7 @@ namespace AkbilYonetimiFormUI
             FrmAkbilIslemleri frmAkbilIslemleri = new FrmAkbilIslemleri();
             frmAkbilIslemleri.ShowDialog();
         }
+
+       
     }
 }

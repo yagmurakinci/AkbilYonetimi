@@ -29,7 +29,6 @@ namespace AkbilYonetimiFormUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmIslemler));
             this.btnAkbiller = new System.Windows.Forms.Button();
             this.btnTalimatlar = new System.Windows.Forms.Button();
             this.btnAyarlar = new System.Windows.Forms.Button();
@@ -45,7 +44,7 @@ namespace AkbilYonetimiFormUI
             this.btnAkbiller.TabIndex = 0;
             this.btnAkbiller.Text = "AKBİL İŞLEMLERİ";
             this.btnAkbiller.UseVisualStyleBackColor = false;
-            this.btnAkbiller.Click += new System.EventHandler(this.btnAkbiller_Click_1);
+            this.btnAkbiller.Click += new System.EventHandler(this.btnAkbiller_Click);
             // 
             // btnTalimatlar
             // 
@@ -75,7 +74,7 @@ namespace AkbilYonetimiFormUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = global::AkbilYonetimiFormUI.Properties.Resources._36;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(451, 328);
             this.Controls.Add(this.btnAyarlar);

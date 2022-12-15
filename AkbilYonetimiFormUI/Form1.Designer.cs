@@ -29,7 +29,6 @@ namespace AkbilYonetimiFormUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGiris));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -75,6 +74,7 @@ namespace AkbilYonetimiFormUI
             this.txtSifre.Name = "txtSifre";
             this.txtSifre.Size = new System.Drawing.Size(149, 20);
             this.txtSifre.TabIndex = 3;
+            this.txtSifre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSifre_KeyPress);
             // 
             // btnGirisYap
             // 
@@ -100,7 +100,7 @@ namespace AkbilYonetimiFormUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = global::AkbilYonetimiFormUI.Properties.Resources._36;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(460, 288);
             this.Controls.Add(this.btnKayitOl);
