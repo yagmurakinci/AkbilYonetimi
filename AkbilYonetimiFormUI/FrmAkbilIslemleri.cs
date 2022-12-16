@@ -134,5 +134,10 @@ namespace AkbilYonetimiFormUI
                     //TODO: loglama txt dosyasına yazdır
             }
         }
+
+        private void dataGridViewAkbiller_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

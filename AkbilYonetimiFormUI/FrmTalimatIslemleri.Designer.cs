@@ -65,6 +65,7 @@ namespace AkbilYonetimiFormUI
             this.anaMenuToolStripMenuItem.Name = "anaMenuToolStripMenuItem";
             this.anaMenuToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
             this.anaMenuToolStripMenuItem.Text = "ANA MENÜ";
+            this.anaMenuToolStripMenuItem.Click += new System.EventHandler(this.anaMenuToolStripMenuItem_Click);
             // 
             // cikisyapToolStripMenuItem
             // 
@@ -72,6 +73,7 @@ namespace AkbilYonetimiFormUI
             this.cikisyapToolStripMenuItem.Name = "cikisyapToolStripMenuItem";
             this.cikisyapToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
             this.cikisyapToolStripMenuItem.Text = "ÇIKIŞ YAP";
+            this.cikisyapToolStripMenuItem.Click += new System.EventHandler(this.cikisyapToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -104,6 +106,7 @@ namespace AkbilYonetimiFormUI
             this.cmbBoxAkbiller.Size = new System.Drawing.Size(345, 24);
             this.cmbBoxAkbiller.TabIndex = 3;
             this.cmbBoxAkbiller.Text = "Akbil Seçiniz...";
+            this.cmbBoxAkbiller.SelectedIndexChanged += new System.EventHandler(this.cmbBoxAkbiller_SelectedIndexChanged);
             // 
             // checkBoxBekleyenTalimatlar
             // 
@@ -116,6 +119,7 @@ namespace AkbilYonetimiFormUI
             this.checkBoxBekleyenTalimatlar.TabIndex = 4;
             this.checkBoxBekleyenTalimatlar.Text = "Sadece Bekleyen Talimatları Göster";
             this.checkBoxBekleyenTalimatlar.UseVisualStyleBackColor = true;
+            this.checkBoxBekleyenTalimatlar.CheckedChanged += new System.EventHandler(this.checkBoxBekleyenTalimatlar_CheckedChanged);
             // 
             // dataGridViewTalimatlar
             // 
@@ -129,6 +133,10 @@ namespace AkbilYonetimiFormUI
             this.dataGridViewTalimatlar.ReadOnly = true;
             this.dataGridViewTalimatlar.Size = new System.Drawing.Size(536, 156);
             this.dataGridViewTalimatlar.TabIndex = 5;
+            // 
+            // timerBekleyenTalimat
+            // 
+            this.timerBekleyenTalimat.Tick += new System.EventHandler(this.timerBekleyenTalimat_Tick);
             // 
             // label2
             // 
@@ -156,6 +164,7 @@ namespace AkbilYonetimiFormUI
             this.btnYukle.TabIndex = 8;
             this.btnYukle.Text = "YÜKLE";
             this.btnYukle.UseVisualStyleBackColor = true;
+            this.btnYukle.Click += new System.EventHandler(this.btnYukle_Click);
             // 
             // groupBoxBakiye
             // 
@@ -167,7 +176,6 @@ namespace AkbilYonetimiFormUI
             this.groupBoxBakiye.Size = new System.Drawing.Size(345, 49);
             this.groupBoxBakiye.TabIndex = 9;
             this.groupBoxBakiye.TabStop = false;
-            this.groupBoxBakiye.Enter += new System.EventHandler(this.groupBoxBakiye_Enter);
             // 
             // FrmTalimatIslemleri
             // 
@@ -184,6 +192,7 @@ namespace AkbilYonetimiFormUI
             this.MainMenuStrip = this.menuStripTalimatlar;
             this.Name = "FrmTalimatIslemleri";
             this.Text = "Talimat İşlemleri";
+            this.Load += new System.EventHandler(this.FrmTalimatIslemleri_Load);
             this.menuStripTalimatlar.ResumeLayout(false);
             this.menuStripTalimatlar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTalimatlar)).EndInit();

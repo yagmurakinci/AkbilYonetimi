@@ -132,6 +132,7 @@ namespace AkbilYonetimiFormUI
             this.dataGridViewAkbiller.ReadOnly = true;
             this.dataGridViewAkbiller.Size = new System.Drawing.Size(773, 166);
             this.dataGridViewAkbiller.TabIndex = 2;
+            this.dataGridViewAkbiller.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAkbiller_CellContentClick);
             // 
             // btnAkbilKaydet
             // 

@@ -21,7 +21,9 @@ namespace AkbilYonetimiFormUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            //Farklı yöntemlerden devam ister show diolog ister show
+            FrmTalimatIslemleri frmTalimatIslemleri = new FrmTalimatIslemleri();
+            frmTalimatIslemleri.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)

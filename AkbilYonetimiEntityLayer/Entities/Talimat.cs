@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AkbilYonetimiEntityLayer.Entities
 {
-    class Talimat:IIDProperty
+    public class Talimat:IIDProperty
     {
         public DateTime OlusturulmaTarihi { get; set; }
         public string AkbilID { get; set; }
