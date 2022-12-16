@@ -52,7 +52,7 @@ namespace AkbilYonetimiFormUI
                 catch (Exception hata)
                 {
 
-                    MessageBox.Show("Beklenmedik bir hata oluştu!"+hata.Message);
+                    MessageBox.Show("Beklenmedik bir hata oluştu! "+hata.Message);
                     //TODO: loglama txt dosyasına yazdır
                 }
             
@@ -87,9 +87,9 @@ namespace AkbilYonetimiFormUI
             {
                 if (txtBakiye == null)
                     throw new Exception("Yüklenecek tutar boş geçilmez!");
-                Talimatlar yeniTalimat = new Talimat()
+                Talimat yeniTalimat = new Talimat()
                 {
-                    AkbilID = cmbBoxAkbiller.SelectedItem.ToString(),
+                    AkbilID = cmbBoxAkbiller.SelectedValue.ToString(),
                     OlusturulmaTarihi = DateTime.Now,
                     YuklendiMi = false,
                     YuklenecekMiktar=Convert.ToDecimal(txtBakiye.Text),
@@ -102,13 +102,12 @@ namespace AkbilYonetimiFormUI
                 baglantiNesnesi.ConnectionString = connectionString;
                 SqlCommand komutNesnesi = new SqlCommand();
                 komutNesnesi.Connection = baglantiNesnesi;
-                komutNesnesi.CommandText = $"inser into Talimatlar (OlustulmaTarihi,AkbilID,YuklenecekTutar,YuklendiMi,YuklendigiTarih) values (@olusTrh, @akbilid, @tutar, @yukMi, @yukTrh)";
+                komutNesnesi.CommandText = $"insert into Talimatlar (OlustulmaTarihi,AkbilID,YuklenecekTutar,YuklendiMi,YuklendigiTarih) values (@olusTrh, @akbilid, @tutar,0, null)";
+
                 komutNesnesi.Parameters.AddWithValue("@olusTrh",yeniTalimat.OlusturulmaTarihi);
                 komutNesnesi.Parameters.AddWithValue("@akbilid",yeniTalimat.AkbilID);
                 komutNesnesi.Parameters.AddWithValue("@tutar",yeniTalimat.YuklenecekMiktar);
-                komutNesnesi.Parameters.AddWithValue("@yukMi",yeniTalimat.YuklendiMi);
-                komutNesnesi.Parameters.AddWithValue("@yukTrh",yeniTalimat.YuklendigiTarihi);
-                    
+                
                 
                 baglantiNesnesi.Open();
                 if (komutNesnesi.ExecuteNonQuery() > 0)
@@ -146,11 +145,11 @@ namespace AkbilYonetimiFormUI
             baglantiNesnesi.ConnectionString = connectionString;
             SqlCommand komutNesnesi = new SqlCommand();
             komutNesnesi.Connection = baglantiNesnesi;
-            komutNesnesi.CommandText = $"select * KullanicininTalimatlari where k.Id =@kullanici";
+            komutNesnesi.CommandText = $"select * KullanicininTalimatlari where KullaniciId =@kullanici";
             komutNesnesi.Parameters.AddWithValue("@kullanici", GenelIslemler.GirisYapmisKullaniciID);
             if (sadeceBekleyenleriGoster)
             {
-                komutNesnesi.CommandText += "  and t.YuklendiMi=0";
+                komutNesnesi.CommandText += "  and YuklendiMi=0";
                 
             }
            
@@ -252,6 +251,11 @@ namespace AkbilYonetimiFormUI
             FrmIslemler frmIslemler = new FrmIslemler();
             frmIslemler.Show();
             this.Close();
+        }
+
+        private void groupBoxBakiye_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

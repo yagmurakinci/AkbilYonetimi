@@ -176,6 +176,7 @@ namespace AkbilYonetimiFormUI
             this.groupBoxBakiye.Size = new System.Drawing.Size(345, 49);
             this.groupBoxBakiye.TabIndex = 9;
             this.groupBoxBakiye.TabStop = false;
+            this.groupBoxBakiye.Enter += new System.EventHandler(this.groupBoxBakiye_Enter);
             // 
             // FrmTalimatIslemleri
             // 
