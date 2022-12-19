@@ -24,6 +24,23 @@ namespace AkbilYonetimiFormUI
         {
             try
             {
+                if (txtAkbilSeriNo.Text==null || txtAkbilSeriNo.Text==string.Empty)
+                {
+                    MessageBox.Show("HATA: Akbil Seri numarası boş geçilemez!");
+                    return;
+                }
+                if (txtAkbilSeriNo.Text.Length!=16)
+                {
+                    MessageBox.Show("HATA: Akbil Seri numarası 16 haneli olmalıdır!");
+                    return;
+                }
+                foreach (char item in txtAkbilSeriNo.Text)
+                {
+                    if (!char.IsDigit(item))
+                    {
+                        throw new Exception("Akbil numarası sadece rakamlardan oluşmalıdır!");
+                    }
+                }
                 Akbil yeniAkbil = new Akbil
                 {
 
@@ -138,6 +155,20 @@ namespace AkbilYonetimiFormUI
         private void dataGridViewAkbiller_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void cikisyapToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GenelIslemler.GirisYapmisKullaniciAdSoyad = string.Empty;
+            GenelIslemler.GirisYapmisKullaniciID = 0;
+            MessageBox.Show("Güle Güle");
+            FrmGiris frmGiris = new FrmGiris();
+            frmGiris.Show();
+            for (int i = 0; i < Application.OpenForms.Count; i++)
+            {
+                if (Application.OpenForms[i].Name == "FrmGiris") continue;
+                Application.OpenForms[i].Close();
+            }
         }
     }
 }

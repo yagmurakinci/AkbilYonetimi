@@ -69,6 +69,7 @@ namespace AkbilYonetimiFormUI
             this.cikisyapToolStripMenuItem.Name = "cikisyapToolStripMenuItem";
             this.cikisyapToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
             this.cikisyapToolStripMenuItem.Text = "ÇIKIŞ YAP";
+            this.cikisyapToolStripMenuItem.Click += new System.EventHandler(this.cikisyapToolStripMenuItem_Click);
             // 
             // groupBoxAkbilProps
             // 

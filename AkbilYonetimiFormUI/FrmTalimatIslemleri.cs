@@ -61,7 +61,7 @@ namespace AkbilYonetimiFormUI
 
         private void FrmTalimatIslemleri_Load(object sender, EventArgs e)
         {
-            groupBoxBakiye.Enabled = false;
+            
             ComboBoxAkbilleriGetir();
             cmbBoxAkbiller.SelectedIndex = -1;
             cmbBoxAkbiller.Text = "Akbil Seçiniz";
@@ -69,7 +69,10 @@ namespace AkbilYonetimiFormUI
             timerBekleyenTalimat.Interval = 1000;
             timerBekleyenTalimat.Enabled = true;
             //metodu tekrar inceleyeceğiz
-            //BekleyenTalimatSayisiniGetir(); // hata verdiği için yorum satırı yaptık
+            GrideTalimatlariGetir();
+            BekleyenTalimatSayisiniGetir(); // hata verdiği için yorum satırı yaptık
+            dataGridViewTalimatlar.ContextMenuStrip = contextMenuStripTalimatGrid;
+            groupBoxBakiye.Enabled = false;
         }
 
         private void cmbBoxAkbiller_SelectedIndexChanged(object sender, EventArgs e)
@@ -85,8 +88,10 @@ namespace AkbilYonetimiFormUI
         {
             try
             {
-                if (txtBakiye == null)
-                    throw new Exception("Yüklenecek tutar boş geçilmez!");
+                if (cmbBoxAkbiller.SelectedIndex < 0)
+                    throw new Exception("Talimat yüklemek için akbil seçiniz");
+                if (txtBakiye.Text == null || txtBakiye.Text == string.Empty)
+                    throw new Exception("Yüklenecek tutar boş geçilemez");
                 Talimat yeniTalimat = new Talimat()
                 {
                     AkbilID = cmbBoxAkbiller.SelectedValue.ToString(),
@@ -128,6 +133,7 @@ namespace AkbilYonetimiFormUI
                 {
                     GrideTalimatlariGetir();
                 }
+                BekleyenTalimatSayisiniGetir();
 
 
                 #endregion
@@ -145,7 +151,7 @@ namespace AkbilYonetimiFormUI
             baglantiNesnesi.ConnectionString = connectionString;
             SqlCommand komutNesnesi = new SqlCommand();
             komutNesnesi.Connection = baglantiNesnesi;
-            komutNesnesi.CommandText = $"select * KullanicininTalimatlari where KullaniciId =@kullanici";
+            komutNesnesi.CommandText = $"select * from KullanicininTalimatlari where KullaniciId =@kullanici";
             komutNesnesi.Parameters.AddWithValue("@kullanici", GenelIslemler.GirisYapmisKullaniciID);
             if (sadeceBekleyenleriGoster)
             {
@@ -161,14 +167,15 @@ namespace AkbilYonetimiFormUI
             adaptor.Fill(dt);
             dataGridViewTalimatlar.DataSource = dt;
 
-            //dataGridViewAkbiller.Columns["AkbilSahibiID"].Visible = false;
-            //dataGridViewAkbiller.Columns["KayitTarihi"].Width = 200;
-            //dataGridViewAkbiller.Columns["SonKullanimTarihi"].Width = 200;
-            //dataGridViewAkbiller.Columns["AkbilNo"].Width = 200;
+            dataGridViewTalimatlar.Columns["Id"].Visible = false;
+            dataGridViewTalimatlar.Columns["KullaniciId"].Visible = false;
+            dataGridViewTalimatlar.Columns["OlustulmaTarihi"].Width = 150;
+            dataGridViewTalimatlar.Columns["YuklendigiTarih"].Width = 200;
+            dataGridViewTalimatlar.Columns["AkbilID"].Width = 200;
 
-            
-            //dataGridViewAkbiller.Columns["AkbilTipi"].HeaderText =
-            //   "Akbil Tipi";
+
+            dataGridViewTalimatlar.Columns["YuklendigiTarih"].HeaderText =
+               "Yüklendiği Tarih";
 
             baglantiNesnesi.Close();
         }
@@ -190,7 +197,7 @@ namespace AkbilYonetimiFormUI
             try
             {
                 string connectionString =
-                   @"Server=DESKTOP-OFVK2FD\MSSQLSERVER01;Database=AKBILYONETIMIDB;Trusted_Connection=True;";
+                   @"Server=DESKTOP-OFVK2FD\MSSQLSERVER01;Database=AKBİLYONETİMİDB;Trusted_Connection=True;";
                 SqlConnection baglantiNesnesi = new SqlConnection();
                 baglantiNesnesi.ConnectionString = connectionString;
                 //SqlCommand komutNesnesi = new SqlCommand();
@@ -200,11 +207,12 @@ namespace AkbilYonetimiFormUI
                 //kısa yoldan ctor'un 2 parametreli olanını kullan
                 SqlCommand komutNesnesi = new SqlCommand("SP_BekleyenTalimatSayisi", baglantiNesnesi);
                 komutNesnesi.CommandType = CommandType.StoredProcedure;
-                komutNesnesi.Parameters.AddWithValue("@kullaniciId", GenelIslemler.GirisYapmisKullaniciID);
-                // devam edeceğiz...
-                SqlParameter RuturnValue = new SqlParameter("@return_value", SqlDbType.Int);
-                RuturnValue.Direction = ParameterDirection.Output;
-                komutNesnesi.Parameters.Add(RuturnValue);
+
+                SqlParameter kullaniciId = komutNesnesi.Parameters.AddWithValue("@kullaniciId", GenelIslemler.GirisYapmisKullaniciID);
+                kullaniciId.Direction = ParameterDirection.Input;
+                SqlParameter returnValue = new SqlParameter("@return_value", SqlDbType.Int);
+                returnValue.Direction = ParameterDirection.ReturnValue;
+                komutNesnesi.Parameters.Add(returnValue);
                 baglantiNesnesi.Open();
                 komutNesnesi.ExecuteNonQuery();
                 lblBekleyenTalimat.Text = komutNesnesi.Parameters["@return_value"].Value.ToString();
@@ -237,12 +245,18 @@ namespace AkbilYonetimiFormUI
         private void cikisyapToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //sistemden çıkılacak
+
             GenelIslemler.GirisYapmisKullaniciAdSoyad = string.Empty;
             GenelIslemler.GirisYapmisKullaniciID = 0;
             MessageBox.Show("Güle Güle");
             FrmGiris frmGiris = new FrmGiris();
             frmGiris.Show();
-            this.Close(); // deneme için yazdık
+            for (int i = 0; i < Application.OpenForms.Count; i++)
+            {
+                if (Application.OpenForms[i].Name == "FrmGiris") continue;
+                Application.OpenForms[i].Close(); 
+            }
+
 
         }
 
@@ -256,6 +270,75 @@ namespace AkbilYonetimiFormUI
         private void groupBoxBakiye_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void talimatigerceklestirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int sayac = 0;
+                foreach (DataGridViewRow item in dataGridViewTalimatlar.SelectedRows)
+                {
+                    string connectionString = @"Server=DESKTOP-OFVK2FD\MSSQLSERVER01;Database=AKBİLYONETİMİDB;Trusted_Connection=True;";
+                    SqlConnection baglantiNesnesi = new SqlConnection();
+                    baglantiNesnesi.ConnectionString = connectionString;
+                    SqlCommand komutNesnesi = new SqlCommand();
+                    komutNesnesi.Connection = baglantiNesnesi;
+                    komutNesnesi.CommandText = $"update Talimatlar set YuklendiMi=1 , YuklendigiTarih=yukTrh where Id= @id";
+                    var talimatId = item.Cells["Id"].Value;
+                    komutNesnesi.Parameters.AddWithValue("@id",talimatId);
+                    komutNesnesi.Parameters.AddWithValue("@yukTrh",DateTime.Now);
+
+
+                    baglantiNesnesi.Open();
+                    sayac += komutNesnesi.ExecuteNonQuery();
+                    
+                    baglantiNesnesi.Close(); 
+                }
+                MessageBox.Show($"Gerçekleşen talimat sayısı {sayac}");
+                GrideTalimatlariGetir();
+                BekleyenTalimatSayisiniGetir();
+            }
+            catch (Exception hata)
+            {
+
+                MessageBox.Show("Beklenmedik bir hata oluştu! " + hata.Message);
+            }
+        }
+
+        private void talimatiSilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int sayac = 0;
+                foreach (DataGridViewRow item in dataGridViewTalimatlar.SelectedRows)
+                {
+                    string connectionString = @"Server=DESKTOP-OFVK2FD\MSSQLSERVER01;Database=AKBİLYONETİMİDB;Trusted_Connection=True;";
+                    SqlConnection baglantiNesnesi = new SqlConnection();
+                    baglantiNesnesi.ConnectionString = connectionString;
+                    SqlCommand komutNesnesi = new SqlCommand();
+                    komutNesnesi.Connection = baglantiNesnesi;
+                    komutNesnesi.CommandText = $"delete from Talimatlar where Id=@id";
+                    var talimatId = item.Cells["Id"].Value;
+                    komutNesnesi.Parameters.AddWithValue("@id", talimatId);
+                    baglantiNesnesi.Open();
+                    sayac += komutNesnesi.ExecuteNonQuery();
+                    baglantiNesnesi.Close();
+                }
+                MessageBox.Show($"Silinen/iptal edilen talimat sayısı ={sayac}");
+                GrideTalimatlariGetir();
+                BekleyenTalimatSayisiniGetir();
+            }
+            catch (Exception hata)
+            {
+
+                MessageBox.Show("Beklenmedik bir hata oluştu! " + hata.Message);
+            }
         }
     }
 }

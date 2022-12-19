@@ -43,9 +43,13 @@ namespace AkbilYonetimiFormUI
             this.txtBakiye = new System.Windows.Forms.TextBox();
             this.btnYukle = new System.Windows.Forms.Button();
             this.groupBoxBakiye = new System.Windows.Forms.GroupBox();
+            this.contextMenuStripTalimatGrid = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.talimatigerceklestirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.talimatiSilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripTalimatlar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTalimatlar)).BeginInit();
             this.groupBoxBakiye.SuspendLayout();
+            this.contextMenuStripTalimatGrid.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripTalimatlar
@@ -178,6 +182,28 @@ namespace AkbilYonetimiFormUI
             this.groupBoxBakiye.TabStop = false;
             this.groupBoxBakiye.Enter += new System.EventHandler(this.groupBoxBakiye_Enter);
             // 
+            // contextMenuStripTalimatGrid
+            // 
+            this.contextMenuStripTalimatGrid.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.talimatigerceklestirToolStripMenuItem,
+            this.talimatiSilToolStripMenuItem});
+            this.contextMenuStripTalimatGrid.Name = "contextMenuStrip1";
+            this.contextMenuStripTalimatGrid.Size = new System.Drawing.Size(181, 70);
+            // 
+            // talimatigerceklestirToolStripMenuItem
+            // 
+            this.talimatigerceklestirToolStripMenuItem.Name = "talimatigerceklestirToolStripMenuItem";
+            this.talimatigerceklestirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.talimatigerceklestirToolStripMenuItem.Text = "Talimatı Gerçekleştir";
+            this.talimatigerceklestirToolStripMenuItem.Click += new System.EventHandler(this.talimatigerceklestirToolStripMenuItem_Click);
+            // 
+            // talimatiSilToolStripMenuItem
+            // 
+            this.talimatiSilToolStripMenuItem.Name = "talimatiSilToolStripMenuItem";
+            this.talimatiSilToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.talimatiSilToolStripMenuItem.Text = "Talimatı Sil";
+            this.talimatiSilToolStripMenuItem.Click += new System.EventHandler(this.talimatiSilToolStripMenuItem_Click);
+            // 
             // FrmTalimatIslemleri
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,6 +225,7 @@ namespace AkbilYonetimiFormUI
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTalimatlar)).EndInit();
             this.groupBoxBakiye.ResumeLayout(false);
             this.groupBoxBakiye.PerformLayout();
+            this.contextMenuStripTalimatGrid.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,5 +246,8 @@ namespace AkbilYonetimiFormUI
         private System.Windows.Forms.TextBox txtBakiye;
         private System.Windows.Forms.Button btnYukle;
         private System.Windows.Forms.GroupBox groupBoxBakiye;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripTalimatGrid;
+        private System.Windows.Forms.ToolStripMenuItem talimatigerceklestirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem talimatiSilToolStripMenuItem;
     }
 }

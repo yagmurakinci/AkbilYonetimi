@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AkbilYonetimiEntityLayer.Entities
 {
-    class Kullanici:IIDProperty, IKayitTarihiProperty
+    public class Kullanici:IIDProperty, IKayitTarihiProperty
     {
         public int Id { get; set; }
         [StringLength(50, ErrorMessage = "İsim alanı en fazla 50 karakter olmalıdır!")]

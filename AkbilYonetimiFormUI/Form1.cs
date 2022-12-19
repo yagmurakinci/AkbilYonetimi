@@ -51,8 +51,14 @@ namespace AkbilYonetimiFormUI
                         MessageBox.Show($"Hoşgeldiniz {okuyucu["Isim"].ToString()}  {okuyucu["Soyisim"].ToString()}");
                         GenelIslemler.GirisYapmisKullaniciID = Convert.ToInt32(okuyucu["Id"]);
                         GenelIslemler.GirisYapmisKullaniciAdSoyad = $"{okuyucu["Isim"].ToString()} {okuyucu["Soyisim"].ToString()}";
-
-
+                    }
+                    if (checkBoxBeniHatirla.Checked)
+                    {
+                        Properties.Settings.Default.KullaniciEmail= txtEmail.Text;
+                        Properties.Settings.Default.KullaniciSifre= txtSifre.Text;
+                        Properties.Settings.Default.BeniHatirla= true;
+                        
+                        Properties.Settings.Default.Save(); //
                     }
                     this.Hide();
                     FrmIslemler frmIslemler = new FrmIslemler();
@@ -85,6 +91,14 @@ namespace AkbilYonetimiFormUI
             btnGirisYap.TabIndex = 3;
             btnKayitOl.TabIndex = 4;
 
+
+            if (AkbilYonetimiFormUI.Properties.Settings.Default.BeniHatirla)
+            {
+                txtEmail.Text = AkbilYonetimiFormUI.Properties.Settings.Default.KullaniciEmail;
+                txtSifre.Text = AkbilYonetimiFormUI.Properties.Settings.Default.KullaniciSifre;
+                checkBoxBeniHatirla.Checked = true;
+            }
+
         }
 
         private void txtSifre_KeyPress(object sender, KeyPressEventArgs e)
@@ -93,6 +107,28 @@ namespace AkbilYonetimiFormUI
             {
                 GirisYap();
             }
+        }
+
+        private void checkBoxBeniHatirla_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxBeniHatirla.Checked)
+            {
+                AkbilYonetimiFormUI.Properties.Settings.Default.BeniHatirla = true;
+            }
+            else
+            {
+                AkbilYonetimiFormUI.Properties.Settings.Default.BeniHatirla = false;
+            }
+        }
+
+        private void FrmGiris_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void checkBoxBeniHatirla_CheckedChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
